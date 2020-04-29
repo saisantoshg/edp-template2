@@ -9,6 +9,6 @@ resource "aws_s3_bucket" "s3_client_bucket" {
 
   tags = {
     Name        = var.client_name
-    Environment = var.dev
+    Environment = var.client_env
   }
 }
