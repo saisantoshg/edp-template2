@@ -4,11 +4,11 @@ provider "aws"{
 }
 
 resource "aws_s3_bucket" "s3_client_bucket" {
-  bucket = "my-tf-test-bucket"
+  bucket = var.client_name
   acl    = "private"
 
   tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
+    Name        = var.client_name
+    Environment = var.dev
   }
 }
