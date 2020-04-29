@@ -15,6 +15,26 @@ resource "aws_s3_bucket" "s3_client_bucket" {
    versioning {
     enabled = true
   }
+  
+  lifecycle_rule {
+    id      = "clientfiles_storage_rules"
+    enabled = true
+
+    transition {
+      days          = 30
+      storage_class = "STANDARD_IA" # or "ONEZONE_IA"
+    }
+
+    transition {
+      days          = 60
+      storage_class = "GLACIER"
+    }
+
+    expiration {
+      days = 90
+    }
+  }
+
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
