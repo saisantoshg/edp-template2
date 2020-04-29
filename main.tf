@@ -23,3 +23,12 @@ resource "aws_s3_bucket_public_access_block" "example" {
   block_public_acls   = true
   block_public_policy = true
 }
+
+resource "aws_iam_user" "user1" {
+  name = "user1"
+  path = "/system/"
+
+  tags = {
+    tag-key = "user1"
+  }
+}
