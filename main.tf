@@ -11,4 +11,15 @@ resource "aws_s3_bucket" "s3_client_bucket" {
     Name        = var.client_name
     Environment = var.client_env
   }
+  
+   versioning {
+    enabled = true
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "example" {
+  bucket = "${aws_s3_bucket.s3_client_bucket.id}"
+
+  block_public_acls   = true
+  block_public_policy = true
 }
