@@ -38,7 +38,7 @@ resource "aws_s3_bucket" "s3_client_bucket" {
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
-  bucket = s3_client_bucket.id
+  bucket = "aws_s3_bucket.s3_client_bucket.id
 
   block_public_acls   = true
   block_public_policy = true
@@ -79,11 +79,10 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "glue_role-attach1" {
-  role       = glue_rds_s3_access_role.name
+  role       = aws_iam_role.glue_rds_s3_access_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
 }
 resource "aws_iam_role_policy_attachment" "glue_role-attach2" {
-  role       = glue_rds_s3_access_role.name
+  role       = aws_iam_role.glue_rds_s3_access_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
 }
-
