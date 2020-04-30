@@ -79,11 +79,11 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "glue_role-attach1" {
-  role       = glue_rds_s3_access_role
+  role       = glue_rds_s3_access_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
 }
 resource "aws_iam_role_policy_attachment" "glue_role-attach2" {
-  role       = glue_rds_s3_access_role
+  role       = glue_rds_s3_access_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
 }
 
