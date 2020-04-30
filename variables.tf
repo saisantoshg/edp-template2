@@ -6,5 +6,5 @@ variable "client_env" {
 }
 variable "iam_glue_policy_arn" {
   description = "IAM Policy to be attached to role"
-  type = "list"
+  type = list(string)
 }
