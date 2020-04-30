@@ -78,12 +78,12 @@ EOF
   }
 }
 
-resource "aws_iam_role_policy_attachment" "test-attach" {
+resource "aws_iam_role_policy_attachment" "glue_role-attach1" {
   role       = "${aws_iam_role.glue_rds_s3_access_role.name}"
-  policy_arn = [
-    "arn:aws:iam::aws:policy/AmazonRDSFullAccess",
-    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
-    "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole",
-    "arn:aws:iam::aws:policy/AmazonRDSDataFullAccess"
-    ]
+  policy_arn = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
 }
+resource "aws_iam_role_policy_attachment" "glue_role-attach2" {
+  role       = "${aws_iam_role.glue_rds_s3_access_role.name}"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+}
+
