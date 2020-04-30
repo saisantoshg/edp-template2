@@ -52,3 +52,38 @@ resource "aws_iam_user" "user1" {
     tag-key = "user1"
   }
 }
+
+
+resource "aws_iam_role" "glue_rds_s3_access_role" {
+  name = "glue_rds_s3_access_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "glue.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "test-attach" {
+  role       = "${aws_iam_role.glue_rds_s3_access_role.name}"
+  policy_arn = [
+    "arn:aws:iam::aws:policy/AmazonRDSFullAccess",
+    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+    "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole",
+    "arn:aws:iam::aws:policy/AmazonRDSDataFullAccess"
+    ]
+}
