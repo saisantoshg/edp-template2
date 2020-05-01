@@ -1,4 +1,4 @@
-variable "client_name"{
+variable "s3_client_buckets"{
    type = string
 }
 variable "client_env" {
