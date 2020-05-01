@@ -9,6 +9,6 @@ variable "iam_glue_policy_arn" {
   type = list(string)
 }
 variable "client_users_s3buckets_maps"{
-   type=map(string)
+   type=map(any)
    description ="mapping users and clients"
 }
