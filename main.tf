@@ -40,8 +40,9 @@ resource "aws_s3_bucket" "s3_client_bucket" {
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
+  for_each = var.s3_client_buckets
+  
   bucket = aws_s3_bucket.s3_client_bucket.id
-
   block_public_acls   = true
   block_public_policy = true
 }
