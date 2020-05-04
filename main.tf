@@ -56,7 +56,7 @@ resource "aws_iam_user" "client_users" {
 resource "aws_iam_user_policy" "client_users_policy" {
   for_each = var.client_users_bucket_mapping
   
-  user = "${aws_iam_user.client_users.name}"
+  user = aws_iam_user.client_users[each.key]
   policy = <<EOF
   {
     "Version": "2012-10-17",
