@@ -47,7 +47,7 @@ resource "aws_s3_bucket_public_access_block" "example" {
 }
 
 resource "aws_iam_user" "user1" {
-  for_each = var.client_users_bucket
+  for_each = var.client_users_bucket_mapping
   
   name=each.key
 
