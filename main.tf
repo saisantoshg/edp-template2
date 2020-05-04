@@ -47,12 +47,10 @@ resource "aws_s3_bucket_public_access_block" "example" {
 }
 
 resource "aws_iam_user" "user1" {
-  name = "user1"
-  path = "/system/"
+  for_each = var.client_users_s3bucket_map
+  
+  name=each.key
 
-  tags = {
-    tag-key = "user1"
-  }
 }
 
 
