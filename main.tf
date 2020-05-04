@@ -46,11 +46,45 @@ resource "aws_s3_bucket_public_access_block" "example" {
   block_public_policy = true
 }
 
-resource "aws_iam_user" "user1" {
+resource "aws_iam_user" "client_users" {
   for_each = var.client_users_bucket_mapping
   
   name=each.key
 
+}
+
+resource "aws_iam_user_policy" "client_users_policy" {
+  for_each = var.client_users_bucket_mapping
+  
+  user = "${aws_iam_user.client_users.name}"
+  policy = <<EOF
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3:::each.value/*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::each.value"
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": "s3:ListAllMyBuckets",
+            "Resource": "*"
+        }
+    ]
+}
+EOF
 }
 
 
