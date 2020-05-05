@@ -22,9 +22,7 @@ variable "users" {
     name                 = string
     force_destroy        = bool
     path                 = string
-    permissions_boundary = string
     tags                 = map(string)
-    policy_arns          = list(string)
     inline_policies = list(object({
       name           = string
       template       = string
