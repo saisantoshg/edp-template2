@@ -10,3 +10,11 @@ module "s3_buckets" {
   s3_client_buckets        = var.s3_client_buckets
 
 }
+  
+module "glue_s3_role" {
+  source = "./modules/roles	/"
+
+  create_role              = var.create_role
+  iam_glue_policy_arn      = var.iam_glue_policy_arn
+
+}
