@@ -1,12 +1,7 @@
-variable "s3_client_buckets"{
-   type = list(string)
-}
-variable "client_env" {
-    type = string
-}
-variable "iam_glue_policy_arn" {
-  description = "IAM Policy to be attached to role"
-  type = list(string)
+variable "create_users"{
+    type = bool
+   default = true
+   description ="should we create users?"
 }
 variable "client_users_bucket_mapping"{
    type = map(string)
