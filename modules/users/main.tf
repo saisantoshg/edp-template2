@@ -29,7 +29,7 @@ locals {
 module "inline_policy_documents" {
   source = "../policy_documents"
 
-  create_policy_documents = var.create_users
+  create_users = var.create_users
 
   policies = [
     for policy_map in local.inline_policies : {
