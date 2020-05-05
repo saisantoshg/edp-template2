@@ -11,7 +11,6 @@ resource "aws_s3_bucket" "s3_client_bucket" {
   tags = {
     count      = length(var.s3_client_buckets)
     Name       = var.s3_client_buckets[count.index]
-    Environment = var.client_env
   }
   
    versioning {
