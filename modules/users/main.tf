@@ -29,7 +29,7 @@ locals {
 module "inline_policy_documents" {
   source = "../policy_documents"
 
-  create_policy_documents = var.client_users_bucket_mapping
+  create_policy_documents = var.create_policy_documents
 
   policies = [
     for policy_map in local.inline_policies : {
