@@ -34,6 +34,7 @@ variable "users" {
       template_paths = list(string)
       template_vars  = map(string)
     }))
+   }))
      default = []
 }
      
