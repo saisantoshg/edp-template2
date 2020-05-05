@@ -31,11 +31,4 @@ variable "users" {
       template_paths = list(string)
       template_vars  = map(string)
     }))
-    access_keys = list(object({
-      name    = string
-      status  = string
-      pgp_key = string
-    }))
-  }))
-  default = []
 }
