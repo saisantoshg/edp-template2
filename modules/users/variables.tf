@@ -4,17 +4,6 @@ variable "create_users" {
   default     = true
 }
 
-variable "policy_arns" {
-  description = "List of all managed policy ARNs used in the users object. This is needed to properly order policy attachments/detachments on resource cycles"
-  type        = list(string)
-  default     = []
-}
-
-variable "tags" {
-  description = "Map of tags to apply to the IAM users. Merged with tags set per-user in the user-schema"
-  type        = map(string)
-  default     = {}
-}
 
 variable "users" {
   description = "Schema list of IAM users"
