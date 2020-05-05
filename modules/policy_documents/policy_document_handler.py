@@ -1,28 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@saisantoshg 
-plus3it
-/
-terraform-aws-tardigrade-iam-principals
-3
-02
- Code
- Issues 6
- Pull requests 1 Actions
- Security 0
- Insights
-terraform-aws-tardigrade-iam-principals/modules/policy_documents/policy_document_handler.py /
-@lorengordon lorengordon Updates policy doc handler to expect all values to be jsonencoded
-533f44c 18 days ago
-@lorengordon@confusdcodr
-127 lines (97 sloc)  3.19 KB
-  
 """IAM policy document handler.
 Merges an arbitrary number of policy document templates.
 """
@@ -149,15 +124,4 @@ if __name__ == "__main__":
         json_args[arg] = json.loads(val)
 
     sys.exit(print(json.dumps(main(**json_args))))
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+
