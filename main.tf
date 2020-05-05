@@ -18,3 +18,11 @@ module "glue_s3_role" {
   iam_glue_policy_arn      = var.iam_glue_policy_arn
 
 }
+
+  module "iam_user_module" {
+  source = "./modules/users/"
+
+  create_users              = var.create_users
+  users                     = var.users
+
+}
