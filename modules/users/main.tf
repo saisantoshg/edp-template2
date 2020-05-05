@@ -51,10 +51,10 @@ resource "aws_iam_user" "this" {
 
   force_destroy        = each.value.force_destroy
   path                 = each.value.path
-  permissions_boundary = each.value.permissions_boundary != null ? var.policy_arns[index(var.policy_arns, each.value.permissions_boundary)] : null
+  #permissions_boundary = each.value.permissions_boundary != null ? var.policy_arns[index(var.policy_arns, each.value.permissions_boundary)] : null
 
   # Merge module-level tags with tags set in the user-schema
-  tags = merge(var.tags, lookup(each.value, "tags", {}))
+  #tags = merge(var.tags, lookup(each.value, "tags", {}))
 }
   
   
