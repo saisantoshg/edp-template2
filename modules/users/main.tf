@@ -6,7 +6,7 @@ provider "aws"{
 
 
 locals {
-  users_map = { for user in var.client_users_bucket_mapping : user.name => user }
+  users_map = { for user in var.users : user.name => user }
   #users_map = { for user in var.users : user.name => user }
 
   # Construct list of inline policy maps for use with for_each
@@ -45,7 +45,7 @@ module "inline_policy_documents" {
   
 # create the IAM users
 resource "aws_iam_user" "this" {
-  for_each = var.client_users_bucket_mapping ? local.users_map : {}
+  for_each = var.users ? local.users_map : {}
 
   name = each.key
 
