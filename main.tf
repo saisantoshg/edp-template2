@@ -12,7 +12,7 @@ module "s3_buckets" {
 }
   
 module "glue_s3_role" {
-  source = "./modules/roles	/"
+  source = "./modules/roles/"
 
   create_role              = var.create_role
   iam_glue_policy_arn      = var.iam_glue_policy_arn
