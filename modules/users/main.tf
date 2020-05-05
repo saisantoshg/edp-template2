@@ -61,7 +61,7 @@ resource "aws_iam_user" "this" {
   
 # create inline policies for the IAM users
 resource "aws_iam_user_policy" "this" {
-  for_each = var.client_users_bucket_mapping ? { for policy_map in local.inline_policies : policy_map.id => policy_map } : {}
+  for_each = var.users ? { for policy_map in local.inline_policies : policy_map.id => policy_map } : {}
 
   name   = each.value.policy_name
   user   = aws_iam_user.this[each.value.user_name].id
