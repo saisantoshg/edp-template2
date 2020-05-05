@@ -1,3 +1,15 @@
+variable "create_buckets"{
+   type = bool
+   default = true
+}
+variable "create_role"{
+   type = bool
+   default = true
+}
+variable "create_users"{
+   type = bool
+   default = true
+}
 variable "s3_client_buckets"{
    type = list(string)
 }
