@@ -29,20 +29,11 @@ variable "users" {
     name                 = string
     force_destroy        = bool
     path                 = string
-    permissions_boundary = string
     tags                 = map(string)
-    policy_arns          = list(string)
     inline_policies = list(object({
       name           = string
       template       = string
       template_paths = list(string)
       template_vars  = map(string)
     }))
-    access_keys = list(object({
-      name    = string
-      status  = string
-      pgp_key = string
-    }))
-  }))
-  default = []
 }
