@@ -12,7 +12,7 @@ locals {
   # Construct list of inline policy maps for use with for_each
   # https://www.terraform.io/docs/configuration/functions/flatten.html#flattening-nested-structures-for-for_each
   inline_policies = flatten([
-    for user in var.client_users_bucket_mapping : [
+    for user in var.users : [
       for inline_policy in lookup(user, "inline_policies", []) : {
         id             = "${user.name}:${inline_policy.name}"
         user_name      = user.name
