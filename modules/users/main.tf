@@ -45,10 +45,9 @@ module "inline_policy_documents" {
   
 # create the IAM users
 resource "aws_iam_user" "this" {
-  for_each = var.users ? local.users_map : {}
+  for_each = var.create_users ? local.users_map : {}
 
   name = each.key
-
   force_destroy        = each.value.force_destroy
   path                 = each.value.path
   #permissions_boundary = each.value.permissions_boundary != null ? var.policy_arns[index(var.policy_arns, each.value.permissions_boundary)] : null
