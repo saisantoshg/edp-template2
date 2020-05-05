@@ -19,10 +19,4 @@ module "glue_s3_role" {
 
 }
 
-  module "iam_user_module" {
-  source = "./modules/users/"
 
-  create_users              = var.create_users
-  users                     = var.users
-
-}
