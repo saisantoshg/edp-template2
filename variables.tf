@@ -17,21 +17,3 @@ variable "iam_glue_policy_arn" {
   description = "IAM Policy to be attached to role"
   type = list(string)
 }
-variable "users" {
-  description = "Schema list of IAM users"
-  type = list(object({
-    name                 = string
-    force_destroy        = bool
-    path                 = string
-    tags                 = map(string)
-    inline_policies = list(object({
-      name           = string
-      template       = string
-      template_paths = list(string)
-      template_vars  = map(string)
-    }))
-   }))
-     default = []
-}
-     
-    
