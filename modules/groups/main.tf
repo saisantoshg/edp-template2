@@ -31,6 +31,6 @@ resource "aws_iam_group_policy_attachment" "test-attach" {
     "${up.groupname} ${up.policy_arn}" => up
   }
 
-  user       = each.value.groupname
+  group       = each.value.groupname
   policy_arn = each.value.policy_arn
 }
