@@ -10,7 +10,7 @@ locals {
 }
 
 
-resource "aws_iam_group" "EC2+RDS" {
+resource "aws_iam_group" "EC2_RDS" {
   name = "EC2+RDS"
   path = "/groups/"
 }
