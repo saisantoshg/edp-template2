@@ -1,6 +1,6 @@
 variable "group_map" {
   description = "attaching policies to groups"
-  type = list(object({
+  type = map(object({
       groupname = string
       policies = list(string)
     }))
