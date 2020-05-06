@@ -60,9 +60,10 @@ resource "aws_iam_user" "this" {
   
 # create inline policies for the IAM users
 resource "aws_iam_user_policy" "this" {
-  for_each = var.create_users ? { for policy_map in local.inline_policies : policy_map.id => policy_map } : {}
+  for_each = var.create_users ? { for policy in local.inline_policy_ids : policy.id => policy } : {}
 
   name   = each.value.policy_name
   user   = aws_iam_user.this[each.value.user_name].id
   policy = module.inline_policy_documents.policies[each.key]
 }
+    
