@@ -5,7 +5,7 @@ provider "aws"{
 
 locals {
   policy_attachments = flatten([
-    for groupname, policies in var.service_map : [
+    for groupname, policies in var.group_map : [
       for policy_arn in policies: {
         groupname   = groupname
         policy_arn = policy_arn
