@@ -27,7 +27,7 @@ resource "aws_iam_group" "ViewBilling" {
 
 resource "aws_iam_group_policy_attachment" "test-attach" {
   for_each = {
-    for up in var.policy_attachments :
+    for up in local.policy_attachments :
     "${up.groupname} ${up.policy_arn}" => up
   }
 
