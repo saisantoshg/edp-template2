@@ -11,7 +11,7 @@ locals {
 
 
 resource "aws_iam_group" "EC2_RDS" {
-  name = "EC2+RDS"
+  name = "EC2_RDS"
   path = "/groups/"
 }
 
