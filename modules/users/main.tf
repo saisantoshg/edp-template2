@@ -11,32 +11,31 @@ locals {
 
   # Construct list of inline policy maps for use with for_each
   # https://www.terraform.io/docs/configuration/functions/flatten.html#flattening-nested-structures-for-for_each
-  inline_policies = flatten([
+  inline_policy_ids = flatten([
     for user in var.users : [
-      for inline_policy in lookup(user, "inline_policies", []) : {
-        id             = "${user.name}:${inline_policy.name}"
-        user_name      = user.name
-        policy_name    = inline_policy.name
-        template       = inline_policy.template
-        template_paths = inline_policy.template_paths
-        template_vars  = inline_policy.template_vars
+      for inline_policy in lookup(user, "inline_policy_names", []) : {
+        id          = "${user.name}:${inline_policy}"
+        user_name   = user.name
+        policy_name = inline_policy
       }
     ]
   ])
 }
-    
 
+  
 module "inline_policy_documents" {
   source = "../policy_documents"
 
-  create_policy_documents  = var.create_users
+  create_policy_documents = var.create_users
+
+  policy_names = local.inline_policy_ids[*].id
 
   policies = [
-    for policy_map in local.inline_policies : {
-      name           = policy_map.id,
-      template       = policy_map.template
-      template_paths = policy_map.template_paths
-      template_vars  = policy_map.template_vars
+    for policy in local.inline_policies : {
+      name           = policy.id,
+      template       = policy.template
+      template_paths = policy.template_paths
+      template_vars  = policy.template_vars
     }
   ]
 }
