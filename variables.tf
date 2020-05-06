@@ -17,3 +17,7 @@ variable "iam_glue_policy_arn" {
   description = "IAM Policy to be attached to role"
   type = list(string)
 }
+variable "group_map" {
+  description = "attaching policies to groups"
+  type = map(string)
+}
