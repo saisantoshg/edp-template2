@@ -1,8 +1,3 @@
-provider "aws"{
-  version = "2.33.0"
-  region="ap-south-1"
-}
-
 locals {
   policy_attachments = flatten([
     for groupname, policies in var.group_map : [
