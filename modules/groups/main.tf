@@ -30,4 +30,8 @@ resource "aws_iam_group" "Clients" {
   path = "/groups/"
 }
 
-
+resource "aws_iam_group_policy_attachment" "group_attach"{
+    foreach = local.policy_attachments
+      group      = each.value.groupname
+      policy_arn = each.value.policy_arn
+  }
