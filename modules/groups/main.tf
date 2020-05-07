@@ -33,7 +33,7 @@ resource "aws_iam_group" "Clients" {
 resource "aws_iam_group_policy_attachment" "group_attach"{
     foreach = {
      for up in var.policy_attachments :
-      "${up.username} ${up.policy_arn}" => up
+      "${up.groupname} ${up.policy_arn}" => up
      }
       group      = each.value.groupname
       policy_arn = each.value.policy_arn
