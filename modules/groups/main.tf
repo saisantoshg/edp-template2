@@ -2,7 +2,7 @@ locals {
   policy_attachments = flatten([
     for groupname,policies in var.group_map : [
       for policy_arn in policies: {
-        groupname   = groupname
+        group  = group
         policy_arn = policy_arn
       }
     ]
@@ -30,6 +30,6 @@ resource "aws_iam_group_policy_attachment" "group_attach"{
      for up in var.policy_attachments :
       "${up.groupname} ${up.policy_arn}" => up
      }
-      group      = each.value.groupname
+      group      = each.value.group
       policy_arn = each.value.policy_arn
   }
