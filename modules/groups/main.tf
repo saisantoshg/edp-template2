@@ -1,7 +1,7 @@
 locals {
   policy_attachments = flatten([
-    for groupname,policies in var.group_map : [
-      for policy_arn in policies: {
+    for group in keys(var.group_map) : [
+      for policy_arn in var.group_map[group]: {
         group  = group
         policy_arn = policy_arn
       }
