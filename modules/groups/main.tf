@@ -1,9 +1,9 @@
 locals {
   policy_attachments = flatten([
-    for group in keys(var.group_map) : [
-      for policy_arn in var.group_map[group]: {
-        group  = group
-        policy_arn = policy_arn
+    for i in keys(var.group_map) : [
+      for j in var.group_map[i]: {
+        group  = i
+        policy_arn = j
       }
     ]
   ])
@@ -24,5 +24,5 @@ resource "aws_iam_group" "ViewBilling" {
   name = "ViewBilling"
   path = "/groups/"
 }
-    
+
 
