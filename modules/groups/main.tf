@@ -24,5 +24,10 @@ resource "aws_iam_group" "ViewBilling" {
   name = "ViewBilling"
   path = "/groups/"
 }
+    
+resource "aws_iam_group" "Clients" {
+  name = "Clients"
+  path = "/groups/"
+}
 
 
