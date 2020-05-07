@@ -25,12 +25,4 @@ resource "aws_iam_group" "ViewBilling" {
   path = "/groups/"
 }
 
-resource "aws_iam_group_policy_attachment" "test-attach" {
-  for_each = {
-    for up in local.policy_attachments :
-    "${up.groupname} ${up.policy_arn}" => up
-  }
 
-  group       = each.value.groupname
-  policy_arn = each.value.policy_arn
-}
