@@ -26,11 +26,8 @@ resource "aws_iam_group" "ViewBilling" {
 }
 
  resource "aws_iam_group_policy_attachment" "group_attach"{
-    foreach = {
-      for up in local.policy_attachments :
-        "${up.groupname} ${up.policy_arn}" => up
-     }
-      group      = each.value.group
-      policy_arn = each.value.policy_arn
+    count = length (local.policy_attachments)
+    group = local.policy_attachments[index].group
+     policy_arn = local.policy_attachments[index].policy_arn
   }
 
